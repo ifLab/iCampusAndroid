@@ -62,6 +62,7 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.igexin.sdk.PushManager;
 @SuppressLint("NewApi")
 public class ICampus extends Activity {
 	private GridView gridView;
@@ -83,6 +84,7 @@ public class ICampus extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		PushManager.getInstance().initialize(this.getApplicationContext());
 		statusFile = new StatusFile(ICampus.this);
 		if (first) {
 			Intent intent = getIntent();
