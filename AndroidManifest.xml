@@ -46,7 +46,7 @@
     <application
         android:name="com.baidu.frontia.FrontiaApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/bistu_log"
         android:label="iBistu"
         android:theme="@style/Theme.Ibistu" >
 
@@ -55,14 +55,20 @@
         <meta-data
             android:name="PUSH_APPID"
             android:value="kXU8Yw5afH9TPoh4tX8xR8" />
+        <!-- UFSe46pgyQ74wqfG13qV56 -->
+        <!-- iflab账号 -->
         <!-- 替换为第三方应用的APPID -->
         <meta-data
             android:name="PUSH_APPKEY"
             android:value="1ooCdTgtFJA3y7hGU1eDq9" />
+        <!-- GPbs0MsWvc8Foc3ogVhZY6 -->
+        <!-- iflab账号 -->
         <!-- 替换为第三方应用的APPKEY -->
         <meta-data
             android:name="PUSH_APPSECRET"
             android:value="hhGOU9BPJ36VK9IBpSuPM2" />
+        <!-- TGRzySds6897zxVB8nlU53 -->
+        <!-- iflab账号 -->
         <!-- 替换为第三方应用的APPSECRET -->
         <meta-data
             android:name="PUSH_GROUPID"
@@ -88,6 +94,19 @@
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.igexin.sdk.action.pushmanager" />
+            </intent-filter>
+        </receiver>
+        <!-- 配置第三方Receiver -->
+        <receiver
+            android:name="cn.edu.bistu.pushreceiver.PushGetuiReceiver"
+            android:exported="false" >
+            <intent-filter>
+
+                <!-- 替换为action android:name="com.igexin.sdk.action.第三方应用APPID" -->
+                <action android:name="com.igexin.sdk.action.kXU8Yw5afH9TPoh4tX8xR8" />
+ 					<!-- UFSe46pgyQ74wqfG13qV56 -->
+                    <!-- iflab账号 -->
+
             </intent-filter>
         </receiver>
 
@@ -116,6 +135,8 @@
                 <action android:name="com.igexin.sdk.action.7fjUl2Z3LH6xYy7NQK4ni4" />
                 <!-- 替换为android:name="com.igexin.sdk.action.第三方的appId" -->
                 <action android:name="com.igexin.sdk.action.kXU8Yw5afH9TPoh4tX8xR8" />
+                        <!-- UFSe46pgyQ74wqfG13qV56 -->
+     					   <!-- iflab账号 -->
             </intent-filter>
         </receiver>
 
@@ -227,6 +248,8 @@
         <activity android:name="cn.edu.bistu.bistujob.JobSort" >
         </activity>
         <activity android:name="cn.edu.bistu.bistujob.JobDetail" >
+        </activity>
+        <activity android:name="cn.edu.bistu.pushreceiver.ShowPushMessageActivity" >
         </activity>
         <activity
             android:name="cn.edu.bistu.bistujob.JobPublish"

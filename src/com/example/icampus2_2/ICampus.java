@@ -24,6 +24,9 @@ import cn.edu.bistu.oauthsdk.HttpRequestGetTask;
 import cn.edu.bistu.oauthsdk.OauthUtil;
 import cn.edu.bistu.oauthsdk.OpenBistuProvider;
 import cn.edu.bistu.oauthsdk.OpenConsumer;
+import cn.edu.bistu.pushreceiver.PushGetuiReceiver;
+import cn.edu.bistu.pushreceiver.PushMessageHandler;
+import cn.edu.bistu.pushreceiver.ShowPushMessageActivity;
 import cn.edu.bistu.school.SchoolShow;
 import cn.edu.bistu.secondhand.SecondHand;
 import cn.edu.bistu.tools.ACache;
@@ -50,6 +53,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -100,6 +104,11 @@ public class ICampus extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenWidth = dm.widthPixels;
 		init();
+		PushMessageHandler p = PushGetuiReceiver.getMessageHandler(); 
+		if(p != null){
+			p.setContext(this).handle();
+			PushGetuiReceiver.resetMessageHandler();
+		}
 	}
 
 	private void showNoNet() {
