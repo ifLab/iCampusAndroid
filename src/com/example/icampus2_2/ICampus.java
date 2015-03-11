@@ -9,6 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.example.group.GroupFirst;
+
+import cn.edu.bistu.pushreceiver.Util;
+
 import com.example.personal.Person;
 import com.example.personal.PersonShow;
 import com.hcjcch.educationaladministration.activity.MarkQueryActivity;
@@ -24,9 +27,9 @@ import cn.edu.bistu.oauthsdk.HttpRequestGetTask;
 import cn.edu.bistu.oauthsdk.OauthUtil;
 import cn.edu.bistu.oauthsdk.OpenBistuProvider;
 import cn.edu.bistu.oauthsdk.OpenConsumer;
-import cn.edu.bistu.pushreceiver.PushGetuiReceiver;
-import cn.edu.bistu.pushreceiver.PushMessageHandler;
+import cn.edu.bistu.pushreceiver.PushJiguangReceiver;
 import cn.edu.bistu.pushreceiver.ShowPushMessageActivity;
+import cn.edu.bistu.pushreceiver.Util;
 import cn.edu.bistu.school.SchoolShow;
 import cn.edu.bistu.secondhand.SecondHand;
 import cn.edu.bistu.tools.ACache;
@@ -38,13 +41,18 @@ import cn.edu.bistu.wifi.Logout;
 import cn.edu.bistu.wifi.StatusFile;
 import cn.edu.bistu.yellowPage.YellowPageShow;
 import cn.edu.bistu.yellowPageData.YelloPage;
+import cn.jpush.android.api.InstrumentedActivity;
+import cn.jpush.android.api.JPushInterface;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.AsyncTask;
@@ -66,9 +74,8 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
-import com.igexin.sdk.PushManager;
 @SuppressLint("NewApi")
-public class ICampus extends Activity {
+public class ICampus extends InstrumentedActivity {
 	private GridView gridView;
 	private PopupWindow popupWindow;
 	private int screenWidth;
@@ -82,14 +89,29 @@ public class ICampus extends Activity {
 	private List<Item> moduls;
 	private List<Item> menus;
 
+
+	//JIGUANG for receive customer msg from jpush server
+	private MessageReceiver mMessageReceiver;
+	public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+	public static final String KEY_TITLE = "title";
+	public static final String KEY_MESSAGE = "message";
+	public static final String KEY_EXTRAS = "extras";
+	
+	public static boolean isForeground = true;
+	
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		PushManager.getInstance().initialize(this.getApplicationContext());
-		statusFile = new StatusFile(ICampus.this);
+		
+		JPushInterface.setDebugMode(true);
+		JPushInterface.init(this);// 发布时去掉第一个
+
+		
+		    statusFile = new StatusFile(ICampus.this);
 		if (first) {
 			Intent intent = getIntent();
 			net = (Net) intent.getSerializableExtra("net");
@@ -104,13 +126,30 @@ public class ICampus extends Activity {
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenWidth = dm.widthPixels;
 		init();
+		//jiguang
+				registerMessageReceiver();
+		/*
 		PushMessageHandler p = PushGetuiReceiver.getMessageHandler(); 
 		if(p != null){
 			p.setContext(this).handle();
 			PushGetuiReceiver.resetMessageHandler();
-		}
+		}*/
 	}
 
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		JPushInterface.onResume(this);
+		super.onResume();
+	}
+	
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		JPushInterface.onPause(this);
+		super.onPause();
+	}
+	
 	private void showNoNet() {
 		Builder builder = new AlertDialog.Builder(ICampus.this)
 				.setTitle("网络提示信息")
@@ -422,7 +461,7 @@ public class ICampus extends Activity {
 			super.onPostExecute(result);
 		}
 	}
-
+	
 	private int getVerCode() {
 		int verCode = -1;
 		try {
@@ -444,4 +483,39 @@ public class ICampus extends Activity {
 		}
 		return verName;
 	}
+	//jiguang
+		public void registerMessageReceiver() {
+			mMessageReceiver = new MessageReceiver();
+			IntentFilter filter = new IntentFilter();
+			filter.setPriority(IntentFilter.SYSTEM_HIGH_PRIORITY);
+			filter.addAction(MESSAGE_RECEIVED_ACTION);
+			registerReceiver(mMessageReceiver, filter);
+		}
+		
+		public class MessageReceiver extends BroadcastReceiver {
+
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
+	              String messge = intent.getStringExtra(KEY_MESSAGE);
+	              String extras = intent.getStringExtra(KEY_EXTRAS);
+	              StringBuilder showMsg = new StringBuilder();
+	              showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
+	              if (!Util.isEmpty(extras)) {
+	            	  showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
+	              }
+	             setCostomMsg(showMsg.toString());
+	             Log.d("JPush",	 "1231231321");
+				}
+			}
+		}
+		private void setCostomMsg(String msg){
+			 //if (null != msgText) {
+				 //msgText.setText(msg);
+				 //msgText.setVisibility(android.view.View.VISIBLE);
+	        //}
+		}
+
+	
+
 }

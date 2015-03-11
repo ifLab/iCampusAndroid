@@ -1,28 +1,38 @@
 package com.example.icampus2_2;
 
+import cn.edu.bistu.pushreceiver.Util;
+import cn.jpush.android.api.InstrumentedActivity;
+import cn.jpush.android.api.JPushInterface;
+
 import com.baidu.frontia.Frontia;
 import com.baidu.frontia.api.FrontiaStatistics;
 import com.baidu.mobstat.SendStrategyEnum;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo.State;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 
-public class Splash extends Activity {
+public class Splash extends InstrumentedActivity {
 	private Net net;
 	private FrontiaStatistics stat;
 
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		boolean isInit = Frontia.init(getApplicationContext(), "your_app_key");
 		if (isInit) {
@@ -35,11 +45,13 @@ public class Splash extends Activity {
 		setContentView(R.layout.splash);
 		net = new Net();
 		(new SplashAsy()).execute();
+		
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
+		//JPushInterface.onResume(this);
 		super.onResume();
 		stat.pageviewStart(this, "Splash");
 	}
@@ -47,6 +59,7 @@ public class Splash extends Activity {
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
+		//JPushInterface.onPause(this);
 		super.onPause();
 		stat.pageviewEnd(this, null);
 	}
@@ -126,4 +139,6 @@ public class Splash extends Activity {
 			return false;
 		}
 	}
+	
+	
 }
