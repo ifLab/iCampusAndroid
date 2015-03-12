@@ -97,7 +97,7 @@ public class ICampus extends InstrumentedActivity {
 	public static final String KEY_MESSAGE = "message";
 	public static final String KEY_EXTRAS = "extras";
 	
-	public static boolean isForeground = true;
+	public static boolean isForeground = false;
 	
 	
 	@SuppressLint("NewApi")
@@ -136,17 +136,28 @@ public class ICampus extends InstrumentedActivity {
 		}*/
 	}
 
+
+
+	@Override
+	protected void onDestroy() {
+		unregisterReceiver(mMessageReceiver);
+		super.onDestroy();
+	}
+	
+	
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
-		JPushInterface.onResume(this);
+		isForeground = true;
+//		JPushInterface.onResume(this);
 		super.onResume();
 	}
 	
 	@Override
 	protected void onPause() {
 		// TODO Auto-generated method stub
-		JPushInterface.onPause(this);
+//		JPushInterface.onPause(this);
+		isForeground = false;
 		super.onPause();
 	}
 	
@@ -499,18 +510,25 @@ public class ICampus extends InstrumentedActivity {
 				if (MESSAGE_RECEIVED_ACTION.equals(intent.getAction())) {
 	              String messge = intent.getStringExtra(KEY_MESSAGE);
 	              String extras = intent.getStringExtra(KEY_EXTRAS);
+	              
 	              StringBuilder showMsg = new StringBuilder();
 	              showMsg.append(KEY_MESSAGE + " : " + messge + "\n");
 	              if (!Util.isEmpty(extras)) {
 	            	  showMsg.append(KEY_EXTRAS + " : " + extras + "\n");
 	              }
-	             setCostomMsg(showMsg.toString());
-	             Log.d("JPush",	 "1231231321");
+	              setCostomMsg(showMsg.toString());
+	              
+	              //Intent intent1 = new Intent(context, ShowPushMessageActivity.class);
+	              //intent1.putExtra("PUSH", extras);
+	              //startActivity(intent1);
 				}
 			}
 		}
 		private void setCostomMsg(String msg){
-			 //if (null != msgText) {
+			Log.d("JPust", msg); 
+			Toast toast = Toast.makeText(this, msg, Toast.LENGTH_SHORT);
+			toast.show();
+			//if (null != msgText) {
 				 //msgText.setText(msg);
 				 //msgText.setVisibility(android.view.View.VISIBLE);
 	        //}
