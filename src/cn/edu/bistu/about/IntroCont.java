@@ -8,10 +8,12 @@ import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.AsyncClientControl;
 import cn.edu.bistu.tools.AsyncClientControl.callBack;
 import cn.edu.bistu.tools.MyProgressDialog;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 
@@ -100,7 +102,7 @@ public class IntroCont extends Activity {
 						}
 						progressDialog.hide();
 					}
-				}, "http://m.bistu.edu.cn/newapi/intro.php" + "?mod=" + mod);
+				}, MyApplication.IcampusApiUrl+IcampusUrl.INTRO_ABOUT+ "?mod=" + mod);
 		client.getData();
 	}
 
