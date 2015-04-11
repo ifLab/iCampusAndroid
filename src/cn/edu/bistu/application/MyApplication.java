@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-
+//MyApplication不代表任何东西，只是在用户打开应用时，先执行这个类，然后再执行主activity
 public class MyApplication extends com.baidu.frontia.FrontiaApplication {
 	public static String CASUrl = null;
 	public static String OAuthUrl = null;
