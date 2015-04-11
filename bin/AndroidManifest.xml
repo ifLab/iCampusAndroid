@@ -32,7 +32,7 @@
     <application
         android:name="com.baidu.frontia.FrontiaApplication"
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/bistu_log"
         android:label="iBistu"
         android:theme="@style/Theme.Ibistu" >
         <meta-data
