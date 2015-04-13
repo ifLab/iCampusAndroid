@@ -2,6 +2,7 @@ package com.example.icampus2_2;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.newsdata.DetailNewsType;
 import cn.edu.bistu.newsdata.JsonNewsDetail;
 
@@ -53,7 +54,7 @@ public class NewsDetail extends Activity {
 
 	private void show() {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://api.bistu.edu.cn/api/api.php?table=news&url=/"
+		client.get(MyApplication.NewsApiUrl+IcampusUrl.DETAILS_NEWS
 				+ url, new AsyncHttpResponseHandler() {
 
 			@Override

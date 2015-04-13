@@ -4,10 +4,12 @@ import java.io.IOException;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujobData.JobDetailType;
 import cn.edu.bistu.bistujobData.JsonJobDetail;
 import cn.edu.bistu.tools.OperateFileForMySaveJob;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -64,7 +66,7 @@ public class JobDetail extends Activity {
 		}
 		id = intent.getStringExtra("id");
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://m.bistu.edu.cn/newapi/jobdetail.php?id=" + id,
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.DETAILS_JOB + id,
 				new AsyncHttpResponseHandler() {
 
 					@Override

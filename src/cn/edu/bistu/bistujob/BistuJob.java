@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujobData.JobType;
 import cn.edu.bistu.bistujobData.JsonJobType;
 import cn.edu.bistu.tools.MyPopWindow;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.ItemWithOutDrawable;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
@@ -103,7 +105,7 @@ public class BistuJob extends FragmentActivity implements ActionBar.TabListener 
 					.setTabListener(this));
 		}
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://m.bistu.edu.cn/newapi/jobtype.php",
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.LIST_JOB,
 				new AsyncHttpResponseHandler() {
 
 					@Override

@@ -5,11 +5,13 @@ import org.apache.http.Header;
 
 import com.example.groupdata.JsonMessage;
 import com.example.groupdata.Messages;
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.example.personal.MessagePost;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.MyProgressDialog;
 import android.annotation.SuppressLint;
 import android.app.ActionBar;
@@ -71,7 +73,7 @@ public class StudentDetil extends Activity {
     	 emailView = (TextView)findViewById(R.id.email);
     	  
     	AsyncHttpClient client = new AsyncHttpClient();
-    	client.get("http://m.bistu.edu.cn/newapi/userinfo.php?userid="+num, new AsyncHttpResponseHandler(){
+    	client.get(MyApplication.IcampusApiUrl+IcampusUrl.STUDENT_DETAIL+num, new AsyncHttpResponseHandler(){
     		@Override
     		public void onFailure(int arg0, Header[] arg1, byte[] arg2,
     				Throwable arg3) {

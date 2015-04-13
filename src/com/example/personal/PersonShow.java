@@ -2,10 +2,12 @@ package com.example.personal;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.MyProgressDialog;
 
 import com.example.groupdata.JsonMessage;
 import com.example.groupdata.Messages;
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -62,7 +64,7 @@ public class PersonShow extends Activity {
 		mobileView = (TextView) findViewById(R.id.mobile);
 		emailView = (TextView) findViewById(R.id.email);
 		client = new AsyncHttpClient();
-		client.get("http://m.bistu.edu.cn/newapi/userinfo.php?userid=" + num,
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.STUDENT_DETAIL + num,
 				new AsyncHttpResponseHandler() {
 					@Override
 					public void onFailure(int arg0, Header[] arg1, byte[] arg2,

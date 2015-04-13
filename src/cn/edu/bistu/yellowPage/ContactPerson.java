@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.MyProgressDialog;
 import cn.edu.bistu.yellowPageData.JsonYellowPagePersonal;
 import cn.edu.bistu.yellowPageData.YelloPagePersonal;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -60,7 +62,7 @@ public class ContactPerson extends Activity {
 		this.setTitle(name);
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(
-				"http://m.bistu.edu.cn/newapi/yellowpage.php?action=tel&catid="
+				MyApplication.IcampusApiUrl+IcampusUrl.CONTACT_PERSON
 						+ depart, new AsyncHttpResponseHandler() {
 
 					@Override

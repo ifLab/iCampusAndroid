@@ -5,12 +5,15 @@ import java.util.List;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.busData.Bus;
 import cn.edu.bistu.busData.CatBus;
 import cn.edu.bistu.busData.EveryBus;
 import cn.edu.bistu.busData.JsonBus;
 import cn.edu.bistu.tools.MyProgressDialog;
+
 import com.example.icampus2_2.ICampus;
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -59,7 +62,7 @@ public class BusShow extends Activity {
 
 	public void show() {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://m.bistu.edu.cn/newapi/bus.php",
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.LIST_BUS,
 				new AsyncHttpResponseHandler() {
 
 					@Override

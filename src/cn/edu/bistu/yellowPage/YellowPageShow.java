@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.MyProgressDialog;
 import cn.edu.bistu.yellowPageData.JsonYellowPage;
 import cn.edu.bistu.yellowPageData.YelloPage;
 
 import com.example.icampus2_2.ICampus;
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -47,7 +49,7 @@ public class YellowPageShow extends Activity {
 		progressDialog = new MyProgressDialog(this, "正在加载中", "请稍后...", false);
 		init();
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://m.bistu.edu.cn/newapi/yellowpage.php?action=cat",
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.YELLOW_PAGE,
 				new AsyncHttpResponseHandler() {
 
 					@Override
