@@ -1,6 +1,7 @@
 package com.example.icampus2_2;
 
 public class IcampusUrl {
+	
 	public static final String  INTRO_ABOUT= "/intro.php";//关于
 	public static final String  LIST_BUS= "/bus.php";//校车列表
 	public static final String  LIST_JOB= "/jobtype.php";//工作列表
@@ -11,6 +12,7 @@ public class IcampusUrl {
 	public static final String  GROUP_MEN="/groupuser.php?group=";//群组人员
 	public static final String  STUDENT_DETAIL="/userinfo.php?userid=";//个人信息
 	public static final String  DETAILS_NEWS="/api.php?table=news&url=/";//新闻详情
+	
 
 
 }

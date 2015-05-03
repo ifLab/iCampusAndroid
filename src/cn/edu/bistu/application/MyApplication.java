@@ -5,12 +5,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.R.string;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
-//MyApplication不代表任何东西，只是在用户打开应用时，先执行这个类，然后再执行主activity（测试一下能否推送上去）
+
 public class MyApplication extends com.baidu.frontia.FrontiaApplication {
 	public static String CASUrl = null;
 	public static String OAuthUrl = null;
@@ -18,6 +19,7 @@ public class MyApplication extends com.baidu.frontia.FrontiaApplication {
 	public static String jwApiUrl = null;
 	public static String IcampusApiUrl = null;
 	public static String NewsApiUrl = null;
+
 
 	@Override
 	public void onCreate() {

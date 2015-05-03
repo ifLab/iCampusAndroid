@@ -29,7 +29,7 @@ public class JsonBus extends Activity{
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				Bus bus = new Bus();
-				bus.setId(jsonObject.getString("id"));
+				bus.setId(jsonObject.getString("id") );
 				bus.setCatName(jsonObject.getString("catName"));
 				bus.setCatIntro(jsonObject.getString("catIntro"));
 				CatBus catBus = new CatBus();
