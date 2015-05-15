@@ -62,7 +62,7 @@ public class BusShow extends Activity {
 
 	public void show() {
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get(MyApplication.IcampusApiUrl+IcampusUrl.LIST_BUS,
+		client.get(MyApplication.IcampusApiUrl+IcampusUrl.BUS,
 				new AsyncHttpResponseHandler() {
 
 					@Override

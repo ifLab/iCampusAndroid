@@ -3,8 +3,10 @@ package cn.edu.bistu.secondhand;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.secondhandtools.HandlrGetData;
 import cn.edu.bistu.tools.secondhandtools.HandlrGetData.onDataLoadListener;
 import cn.edu.bistu.tools.secondhandtools.HcDownRefreshList;
@@ -72,8 +74,8 @@ public class SecondHand extends Activity {
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
 		screenWidth = dm.widthPixels;
-
-		HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhandtype.php",
+		HandlrGetData.data(MyApplication.IcampusApiUrl+IcampusUrl.TYPE_SECONDHAND,
+		//HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhandtype.php",
 				new onDataLoadListener() {
 
 					@Override
@@ -157,7 +159,8 @@ public class SecondHand extends Activity {
 	}
 
 	private void getdata() {
-		HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand.php",
+		HandlrGetData.data(MyApplication.IcampusApiUrl+IcampusUrl.SHOW_SECONDHAND,
+		//HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand.php",
 				new onDataLoadListener() {
 
 					@Override

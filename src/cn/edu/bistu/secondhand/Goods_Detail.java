@@ -1,7 +1,9 @@
 package cn.edu.bistu.secondhand;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.secondhand.SecondHand;
 import cn.edu.bistu.secondhand.Sell_Goods;
 import cn.edu.bistu.tools.secondhandtools.HandlrGetData;
@@ -65,7 +67,11 @@ public class Goods_Detail extends Activity implements
 
 		Bundle extras = getIntent().getExtras();
 		typeid = Integer.parseInt(extras.getString("typeid"));
-		xqdm = Integer.parseInt(extras.getString("xqdm"));
+		try{
+			xqdm = Integer.parseInt(extras.getString("xqdm"));
+		}catch (Exception e){
+			xqdm = 0;
+		}
 		tag = extras.getInt("tag");
 		id = extras.getString("id");
 		// 为适应数组
@@ -170,7 +176,8 @@ public class Goods_Detail extends Activity implements
 		}
 	}
 	private void deletepublish() {
-		HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand_unvalid.php?id="+id,  new onDataLoadListener() {
+		HandlrGetData.data(MyApplication.IcampusApiUrl+IcampusUrl.DELETE_SECONDHAND+id,  new onDataLoadListener() {
+		//HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand_unvalid.php?id="+id,  new onDataLoadListener() {
 			
 			@Override
 			public void onDataLoadr(String result) {

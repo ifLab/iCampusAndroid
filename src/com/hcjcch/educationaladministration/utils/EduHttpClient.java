@@ -1,5 +1,7 @@
 package com.hcjcch.educationaladministration.utils;
 
+import cn.edu.bistu.application.MyApplication;
+
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -9,8 +11,8 @@ import com.loopj.android.http.RequestParams;
  */
 
 public class EduHttpClient {
-    private static final String BASE_URL = "http://222.249.250.31/jiaowu/";
-
+    //private static final String BASE_URL = "http://222.249.250.31/jiaowu";
+	private static final String BASE_URL = MyApplication.jwApiUrl+"/";
     private static AsyncHttpClient client = new AsyncHttpClient();
 
     public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {

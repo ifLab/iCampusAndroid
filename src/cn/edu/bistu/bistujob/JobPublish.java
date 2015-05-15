@@ -9,6 +9,7 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujobData.JobType;
 import cn.edu.bistu.oauth.Oauth;
 import cn.edu.bistu.tools.ACache;
@@ -16,6 +17,7 @@ import cn.edu.bistu.tools.CheckInformation;
 import cn.edu.bistu.tools.GetInformation;
 import cn.edu.bistu.tools.NetworkLoad;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.example.personal.Person;
 
@@ -55,7 +57,8 @@ public class JobPublish extends Activity {
 	private TextView descrip;
 	private TextView quali;
 	private Map<String, String> maps;
-	private String uploadUrlString = "http://m.bistu.edu.cn/newapi/job_add.php";
+	private String uploadUrlString = MyApplication.IcampusApiUrl+IcampusUrl.ADD_JOB;
+	//private String uploadUrlString = "http://m.bistu.edu.cn/newapi/job_add.php";
 	private Map<String, String> map;
 	private Spinner typeidSpinner;
 	private String[] strings;

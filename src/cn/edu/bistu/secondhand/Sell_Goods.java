@@ -8,8 +8,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.secondhandtools.NoScrollGridView;
 import cn.edu.bistu.tools.secondhandtools.Post;
 import cn.edu.bistu.tools.secondhandtools.Upload;
@@ -56,7 +58,8 @@ public class Sell_Goods extends Activity {
 	public List<String> drr = new ArrayList<String>();
 	public static String[] spot = new String[] { "小营", "清河", "健翔桥" };
 	/* 上传到服务器的目录 */
-	String requestURL = "http://jwcapp.bistu.edu.cn/upload.php";
+	String requestURL = MyApplication.jwApiUrl+IcampusUrl.UPLOAD_IMAGE;
+	//String requestURL = "http://jwcapp.bistu.edu.cn/upload.php";
 
 	private String[] items = new String[] { "选择本地图片", "拍照" };
 	int cardNumber, spotNumber;

@@ -80,6 +80,7 @@ public class ImageAdapter extends BaseAdapter {
 		viewHoder.imageView.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
 		// 给ImageView设置Tag,这里已经是司空见惯了
+		System.out.println(mImageUrl);
 		viewHoder.imageView.setTag(mImageUrl);
 		// ******************************* 去掉下面这几行试试是什么效果
 		Bitmap bitmap = mImageDownLoader.getBitmapFromMemCache(mImageUrl

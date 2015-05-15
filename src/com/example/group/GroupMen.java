@@ -6,10 +6,12 @@ import java.util.List;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.MyProgressDialog;
 
 import com.example.groupdata.JsonStudent;
 import com.example.groupdata.Student;
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -52,7 +54,8 @@ public class GroupMen extends Activity {
     	progressDialog = new MyProgressDialog(this, "正在加载中", "请稍后...", false);
     	listView= (ListView)findViewById(R.id.groupfirsts);
     	AsyncHttpClient client = new AsyncHttpClient();
-    	client.get("http://jwcapi.iflab.org/groupuser.php?group="+title+"&grouptype="+classtype, new AsyncHttpResponseHandler(){
+    	client.get(MyApplication.jwApiUrl+IcampusUrl.GROUP_USERS+title+"&grouptype="+classtype, new AsyncHttpResponseHandler(){
+    	//client.get("http://jwcapi.iflab.org/groupuser.php?group="+title+"&grouptype="+classtype, new AsyncHttpResponseHandler(){
     		@Override
     		public void onFailure(int arg0, Header[] arg1, byte[] arg2,
     				Throwable arg3) {

@@ -9,12 +9,14 @@ import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujobData.JobListType;
 import cn.edu.bistu.bistujobData.JsonJobList;
 import cn.edu.bistu.oauth.Oauth;
 import cn.edu.bistu.tools.ACache;
 import cn.edu.bistu.tools.NetworkLoad;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.example.personal.Person;
 import com.loopj.android.http.AsyncHttpClient;
@@ -38,8 +40,8 @@ import android.widget.ListView;
 
 public class MyPublish extends Activity {
 	private ListView listView;
-	private String url = "http://m.bistu.edu.cn/newapi/job.php?userid=";
-	private String deleteUrl = "http://m.bistu.edu.cn/newapi/job_unvalid.php";
+	private String url = MyApplication.IcampusApiUrl+IcampusUrl.MY_JOB;
+	private String deleteUrl = MyApplication.IcampusApiUrl+IcampusUrl.DELETE_JOB;
 	private List<JobListType> list;
 	private FragmentAdapter adapter;
 	private String userid = ""; 

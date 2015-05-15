@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.schoolData.JsonSchool;
 import cn.edu.bistu.schoolData.School;
 import cn.edu.bistu.tools.MyProgressDialog;
@@ -47,7 +48,8 @@ public class SchoolShow extends Activity {
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		progressDialog = new MyProgressDialog(this, "正在加载中", "请稍后...", false);
 		AsyncHttpClient client = new AsyncHttpClient();
-		client.get("http://api.bistu.edu.cn/api/api.php?table=collegeintro",
+		client.get(MyApplication.IcampusApiUrl+"/api.php?table=collegeintro",
+		//client.get("http://api.bistu.edu.cn/api/api.php?table=collegeintro",
 				new AsyncHttpResponseHandler() {
 
 					@Override

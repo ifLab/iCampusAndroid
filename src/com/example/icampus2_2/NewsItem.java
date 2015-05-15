@@ -7,6 +7,7 @@ import com.example.list.ImageAdapter;
 import com.example.list.ImageDownLoader;
 import com.example.list.ImageDownLoader.onImageLoaderListener;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.newsdata.JsonNewsList;
 import cn.edu.bistu.newsdata.NewsListType;
 import android.content.Intent;
@@ -157,7 +158,8 @@ public class NewsItem extends Fragment {
 			JsonNewsList jsonNewsList = new JsonNewsList();
 			List<NewsListType> list = new ArrayList<NewsListType>();
 			list = jsonNewsList
-					.getList("http://api.bistu.edu.cn/api/api.php?table=newslist&url="
+					.getList(MyApplication.NewsApiUrl+IcampusUrl.LIST_NEWS
+					//.getList("http://api.bistu.edu.cn/api/api.php?table=newslist&url="
 							+ params[0] + "&index=" + currentPage);
 			return list;
 		}

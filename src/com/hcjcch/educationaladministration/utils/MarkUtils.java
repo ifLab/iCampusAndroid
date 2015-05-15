@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Message;
 import android.widget.Toast;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.hcjcch.educationaladministration.activity.MarkDetailActivity;
 import com.hcjcch.educationaladministration.config.StaticVariable;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -34,6 +35,7 @@ public class MarkUtils {
         this.xuehao = id;
         this.context = context;
         this.years = this.pull_years("year.php");
+        //this.years = this.pull_years(IcampusUrl.MARKS_YEAR);
     }
     //获取学年列表
     private String[] pull_years(String url){

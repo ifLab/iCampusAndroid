@@ -3,11 +3,13 @@ package cn.edu.bistu.secondhand;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.secondhandtools.HandlrGetData;
 import cn.edu.bistu.tools.secondhandtools.HandlrGetData.onDataLoadListener;
 import cn.edu.bistu.tools.secondhandtools.JsonDeal;
 import cn.edu.bistu.tools.secondhandtools.KindArrayAdapter;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
 import android.annotation.SuppressLint;
@@ -72,7 +74,8 @@ public class MyPublish extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	 private void getdata(String id){
-		 HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand.php?userid="+id, new onDataLoadListener() {
+		 HandlrGetData.data(MyApplication.IcampusApiUrl+IcampusUrl.MY_SECONDHAND+id, new onDataLoadListener() {
+		 // HandlrGetData.data("http://m.bistu.edu.cn/newapi/secondhand.php?userid="+id, new onDataLoadListener() {
 			
 			@Override
 			public void onDataLoadr(String result) {

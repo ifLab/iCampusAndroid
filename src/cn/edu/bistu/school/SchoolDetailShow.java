@@ -4,11 +4,13 @@ import java.util.ArrayList;
 
 import org.apache.http.Header;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.schoolData.JsonSchoolDetail;
 import cn.edu.bistu.schoolData.School;
 import cn.edu.bistu.schoolData.SchoolDetail;
 import cn.edu.bistu.tools.MyProgressDialog;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -50,7 +52,8 @@ public class SchoolDetailShow extends Activity {
 	private void show(int position) {
 		AsyncHttpClient client = new AsyncHttpClient();
 		client.get(
-				"http://api.bistu.edu.cn/api/api.php?table=collegeintro&action=detail&mod="
+				MyApplication.IcampusApiUrl+"/api.php?table=collegeintro&action=detail&mod="
+				//"http://api.bistu.edu.cn/api/api.php?table=collegeintro&action=detail&mod="
 						+ schools.get(position).getMod() + "&id="
 						+ schools.get(position).getId(),
 				new AsyncHttpResponseHandler() {

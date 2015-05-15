@@ -10,10 +10,14 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
+import com.example.icampus2_2.IcampusUrl;
+
+import cn.edu.bistu.application.MyApplication;
 import android.net.Uri;
 
 public class Post {
-	static String path="http://m.bistu.edu.cn/newapi/secondhand_add.php";
+	static String path=MyApplication.IcampusApiUrl+IcampusUrl.ADD_SECONDHAND;
+	//static String path="http://m.bistu.edu.cn/newapi/secondhand_add.php";
 	
 	 
 	

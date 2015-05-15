@@ -10,11 +10,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.newsdata.JsonNewschannel;
 
 public class JsonBus extends Activity{
@@ -76,6 +77,8 @@ public class JsonBus extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		System.out.println(getList(getInformation("http://m.bistu.edu.cn/newapi/bus.php")));
+		//System.out.println(getList(getInformation(MyApplication.IcampusApiUrl+IcampusUrl.BUS)));
+		
+		//System.out.println(getList(getInformation("http://m.bistu.edu.cn/newapi/bus.php")));
 	}
 }

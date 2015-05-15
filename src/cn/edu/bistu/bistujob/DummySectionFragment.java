@@ -13,8 +13,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujobData.JobListType;
 import cn.edu.bistu.bistujobData.JsonJobList;
+
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
@@ -46,9 +49,9 @@ public class DummySectionFragment extends Fragment {
 		mod = bundle.getString("mod");
 		id = bundle.getString("id");
 		if (id.equals("0")) {
-			url = "http://m.bistu.edu.cn/newapi/job.php?mod="+mod;
+			url = MyApplication.IcampusApiUrl+IcampusUrl.DUMMY_JOB+mod;
 		}else {
-			url = "http://m.bistu.edu.cn/newapi/job.php?mod="+mod+"&&"+"typeid="+id;
+			url = MyApplication.IcampusApiUrl+IcampusUrl.DUMMY_JOB+mod+"&&"+"typeid="+id;
 		}
 		listview = (ListView) rootView.findViewById(R.id.list_view);
 		// set drop down listener

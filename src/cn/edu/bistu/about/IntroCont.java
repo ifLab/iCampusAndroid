@@ -74,9 +74,16 @@ public class IntroCont extends Activity {
 					public void afterSucceess(String string) {
 						// TODO Auto-generated method stub
 						try {
+//							System.out.println(string);
 							JSONObject jsonObject = new JSONObject(
 									string.substring(1, string.length() - 1));
 							String intro = jsonObject.getString("introCont");
+							String path = getStorageDirectory();
+							// System.out.println(path);
+							File foldFile = new File(path);
+							if (!foldFile.exists()) {
+								foldFile.mkdir();
+							}
 							File file = new File(getStorageDirectory() + File.separator
 									+ mod + ".html");
 							FileOutputStream outputStream = null;
@@ -87,22 +94,26 @@ public class IntroCont extends Activity {
 								e1.printStackTrace();
 							}
 							try {
+								
 								outputStream.write(intro.getBytes());
 							} catch (IOException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
 							WebSettings webSettings = webView.getSettings();
-							webSettings.setDefaultTextEncodingName("utf-8");
+							webSettings.setDefaultTextEncodingName("UTF-8");
 							webView.loadUrl("file://" + getStorageDirectory()
 									+ File.separator + mod + ".html");
+							//webView.loadData(intro, "text/html", "UTF-8");
 						} catch (JSONException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						progressDialog.hide();
 					}
-				}, MyApplication.IcampusApiUrl+IcampusUrl.INTRO_ABOUT+ "?mod=" + mod);
+				}, 
+				MyApplication.IcampusApiUrl+IcampusUrl.INTRO_ABOUT+ "?mod=" + mod);
+				//"http://m.bistu.edu.cn/api"+IcampusUrl.INTRO_ABOUT+ "?mod=" + mod);
 		client.getData();
 	}
 

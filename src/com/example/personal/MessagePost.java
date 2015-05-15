@@ -6,9 +6,11 @@ import java.util.Map;
 
 import org.apache.http.client.ClientProtocolException;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.CheckInformation;
 import cn.edu.bistu.tools.NetworkLoad;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
 import android.annotation.SuppressLint;
@@ -41,7 +43,8 @@ public class MessagePost extends Activity {
 	TextView typeView;
 	private Intent intent;
 	private Map<String, String> map;
-	private String informationUrl = "http://m.bistu.edu.cn/newapi/userinfomod.php";
+	private String informationUrl = MyApplication.IcampusApiUrl+IcampusUrl.STUDENT_MODIFIED;
+	//private String informationUrl = "http://m.bistu.edu.cn/newapi/userinfomod.php";
 
 	@SuppressLint("NewApi")
 	@Override

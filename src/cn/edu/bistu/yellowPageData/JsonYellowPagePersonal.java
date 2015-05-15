@@ -7,11 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.newsdata.JsonNewschannel;
 
 public class JsonYellowPagePersonal extends Activity {
@@ -47,6 +48,6 @@ public class JsonYellowPagePersonal extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		System.out
-				.println(getList(getInformatiopn("http://m.bistu.edu.cn/newapi/yellowpage.php?action=tel&catid=33")));
+				.println(getList(getInformatiopn(MyApplication.IcampusApiUrl+IcampusUrl.CONTACT_PERSON+"33")));
 	}
 }

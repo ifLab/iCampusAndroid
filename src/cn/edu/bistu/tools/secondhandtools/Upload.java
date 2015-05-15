@@ -9,6 +9,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.secondhand.Sell_Goods;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -75,7 +76,8 @@ public class Upload {
 	      is.close();
           String urlorerr = new JsonDeal(result,context).resultdeal();
           if (!urlorerr.equals("error") ) {
-        	  pic_url="http://jwcapp.bistu.edu.cn"+urlorerr; 
+        	  pic_url=MyApplication.jwApiUrl+urlorerr;
+        	  //pic_url="http://jwcapp.bistu.edu.cn"+urlorerr; 
     	      if (Sell_Goods.pic_urls != null) {
     	    	  Sell_Goods.pic_urls = Sell_Goods.pic_urls+";"+pic_url;
     		} else {
@@ -89,7 +91,6 @@ public class Upload {
 	    } catch (Exception e)
 	    {
 	      e.printStackTrace();
-	     
 	    }
 	  }
 }

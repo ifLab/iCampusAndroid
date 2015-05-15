@@ -6,8 +6,10 @@ import java.util.List;
 
 import org.apache.http.client.ClientProtocolException;
 
+import com.example.icampus2_2.IcampusUrl;
 import com.example.icampus2_2.R;
 
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.tools.secondhandtools.GetData;
 import cn.edu.bistu.tools.secondhandtools.JsonDeal;
 import cn.edu.bistu.tools.secondhandtools.KindArrayAdapter;
@@ -119,10 +121,13 @@ public class Filter extends Activity {
 		switch (id) {
 		case R.id.finish:
 			Log.v("Server :",
-					"http://m.bistu.edu.cn/newapi/secondhand.php?xqdm="
+	MyApplication.IcampusApiUrl+IcampusUrl.SECONDHAND				
+//					"http://m.bistu.edu.cn/newapi/secondhand.php?xqdm="
 							+ url_spot + "&typeid=" + url_kind);
 			new GetDataTask()
-					.execute("http://m.bistu.edu.cn/newapi/secondhand.php?xqdm="
+					.execute(
+							MyApplication.IcampusApiUrl+IcampusUrl.SECONDHAND	
+							//"http://m.bistu.edu.cn/newapi/secondhand.php?xqdm="
 							+ url_spot + "&typeid=" + url_kind);
 			break;
 		case android.R.id.home:

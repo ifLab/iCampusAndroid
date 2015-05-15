@@ -15,6 +15,7 @@ import com.hcjcch.educationaladministration.activity.MarkQueryActivity;
 import com.hcjcch.educationaladministration.activity.SchoolPlaceActivity;
 
 import cn.edu.bistu.about.About;
+import cn.edu.bistu.application.MyApplication;
 import cn.edu.bistu.bistujob.BistuJob;
 import cn.edu.bistu.bus.BusShow;
 import cn.edu.bistu.map.BistuMap;
@@ -140,7 +141,7 @@ public class ICampus extends Activity {
 		gridView = (GridView) findViewById(R.id.icampus);
 		moduls = new ArrayList<Item>();
 		moduls.add(new Item(R.drawable.news, "新闻", MainActivity.class));
-		moduls.add(new Item(R.drawable.school, "学院", SchoolShow.class));
+		//moduls.add(new Item(R.drawable.school, "学院", SchoolShow.class));
 		moduls.add(new Item(R.drawable.yellowpage, "黄页", YellowPageShow.class));
 		moduls.add(new Item(R.drawable.map, "地图", BistuMap.class));
 		moduls.add(new Item(R.drawable.buslogo, "校车", BusShow.class));
@@ -364,6 +365,7 @@ public class ICampus extends Activity {
 			// TODO Auto-generated method stub
 			try {
 				String updateInformation = (new NetworkLoad())
+						//.GetGetInformation(MyApplication.IcampusApiUrl+IcampusUrl.GET_UPDATED_INFO);
 						.GetGetInformation("http://m.bistu.edu.cn/newapi/ibistuAndroid.php");
 				return updateInformation;
 			} catch (ClientProtocolException e) {
